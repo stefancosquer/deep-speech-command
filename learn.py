@@ -3,6 +3,7 @@ import random
 
 import numpy as np
 import matplotlib.pyplot as plt
+from keras.callbacks import EarlyStopping
 from keras.layers import MaxPool1D, Conv1D, Dropout, BatchNormalization, GlobalAvgPool1D
 from keras.models import Sequential
 from keras.layers.core import Dense
@@ -66,6 +67,7 @@ history = model.fit_generator(
     steps_per_epoch=1,
     validation_steps=1,
     epochs=1000,
+    callbacks=[EarlyStopping(patience=100, restore_best_weights=True)],
     verbose=1)
 
 
