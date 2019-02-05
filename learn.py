@@ -5,10 +5,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 from keras.layers import MaxPool1D, Conv1D, Dropout, BatchNormalization, GlobalAvgPool1D
 from keras.models import Sequential
-from keras.layers.core import Dense, Flatten
+from keras.layers.core import Dense
 from keras.optimizers import Adam
 from keras.utils import to_categorical
-from scipy.io.wavfile import read, write
+from scipy.io.wavfile import read
 
 SAMPLERATE = 44100
 CLASSES = ['-', '1', '2', '3', '4', '5', '6', '7', '8', '9']
@@ -65,7 +65,9 @@ history = model.fit_generator(
     validation_data=generator('recordings', 9),
     steps_per_epoch=1,
     validation_steps=1,
-    epochs=100)
+    epochs=1000,
+    verbose=1)
+
 
 ## Evaluate
 
